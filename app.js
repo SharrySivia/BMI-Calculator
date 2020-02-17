@@ -4,6 +4,7 @@ const inch = document.getElementById("inch");
 const btnCalculate = document.getElementById("calculate");
 const btnReset = document.getElementById("reset");
 let messageBox;
+let bmi;
 
 let BMIRange = {
   underweight: ["Underweight", "tomato"],
@@ -42,8 +43,6 @@ function displayBar() {
   messageBox.textContent = BMIRange[status][0];
   messageBox.classList.add("messageBox-show");
 }
-
-let bmi;
 
 //Calculate BMI
 function calculateBMI() {
