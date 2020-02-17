@@ -1,0 +1,2 @@
+# BMI-Calculator
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/70afc17579b14a3a80eb8aeeb6500198)](https://app.codacy.com/manual/SharrySivia/BMI-Calculator?utm_source=github.com&utm_medium=referral&utm_content=SharrySivia/BMI-Calculator&utm_campaign=Badge_Grade_Dashboard)
