@@ -3,6 +3,7 @@ const foot = document.getElementById("foot");
 const inch = document.getElementById("inch");
 const btnCalculate = document.getElementById("calculate");
 const btnReset = document.getElementById("reset");
+let messageBox;
 
 let BMIRange = {
   underweight: ["Underweight", "tomato"],
@@ -13,6 +14,33 @@ let BMIRange = {
 //Changing foot and inch to meter
 function changeToMeter(f = 0, i = 0) {
   return f * 0.3048 + i * 0.0254;
+}
+
+//Transform Button to Bar
+function transFormBtn() {
+  btnCalculate.textContent = "";
+  btnCalculate.classList.add("btn-primary-expand");
+}
+
+//Display Bar and message
+function displayBar() {
+  let status;
+  if (bmi >= 18.5 && bmi <= 25) {
+    status = "normal";
+  } else if (bmi < 18.5) {
+    status = "underweight";
+  } else {
+    status = "overweight";
+  }
+  messageBox = document.getElementById("messageBox");
+
+  for (let i = 0; i < bmi; i++) {
+    btnCalculate.style.setProperty("--width", i);
+    messageBox.style.setProperty("--position", i);
+  }
+  btnCalculate.style.setProperty("--background-color", BMIRange[status][1]);
+  messageBox.textContent = BMIRange[status][0];
+  messageBox.classList.add("messageBox-show");
 }
 
 let bmi;
@@ -28,33 +56,6 @@ function calculateBMI() {
     transFormBtn();
     setTimeout(displayBar, 1000);
   }
-}
-
-//Transform Button to Bar
-function transFormBtn() {
-  btnCalculate.textContent = "";
-  btnCalculate.classList.add("btn-primary-expand");
-}
-
-//Display Bar and message
-function displayBar() {
-  const messageBox = document.getElementById("messageBox");
-  let status;
-  if (bmi >= 18.5 && bmi <= 25) {
-    status = "normal";
-  } else if (bmi < 18.5) {
-    status = "underweight";
-  } else {
-    status = "overweight";
-  }
-
-  for (let i = 0; i < bmi; i++) {
-    btnCalculate.style.setProperty("--width", i);
-    messageBox.style.setProperty("--position", i);
-  }
-  btnCalculate.style.setProperty("--background-color", BMIRange[status][1]);
-  messageBox.textContent = BMIRange[status][0];
-  messageBox.classList.add("messageBox-show");
 }
 
 //Reset Everything
