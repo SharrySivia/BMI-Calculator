@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="container-nav"><h1>BMI Calculator</h1></nav>
+      <div class="container-inputs">
+        <!-- <div class="input">
+          <label for="gender">Gender</label>
+          <select name="gender" id="gender">
+            <option value="null">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div class="input">
+          <label for="age">Age</label>
+          <input type="text" id="age" placeholder="Enter age" />
+        </div> -->
+        <div class="input">
+          <label for="weight">Weight</label>
+          <input type="number" id="weight" placeholder="Enter weight in kg" />
+        </div>
+        <div class="input" id="height">
+          <label for="height">Height</label>
+          <input type="number" id="foot" />
+          <label for="foot">ft</label>
+          <input type="number" id="inch" />
+          <label for="inch">in</label>
+        </div>
+      </div>
+      <div class="message-container">
+        <div id="messageBox" class="messageBox" style="--position:0"></div>
+        <button
+          id="calculate"
+          class="btn btn-primary-collaps btn-primary"
+          style="--width:0; --background-color: transparent"
+        >
+          Calculate
+        </button>
+      </div>
+
+      <button id="reset" class="btn btn-secondary">Reset</button>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

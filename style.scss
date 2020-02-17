@@ -1,0 +1,211 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+$color-primary: #ffe688;
+$color-secondary: #ffeeef;
+$color-dark: #333333;
+$color-light: #fff;
+
+.container {
+  width: 80vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.1);
+  padding-bottom: 3rem;
+
+  &-nav {
+    width: 100%;
+    height: 5rem;
+    background-color: $color-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: $color-dark;
+    font-weight: bold;
+    box-shadow: 0px 0.5rem 2rem rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+  }
+
+  &-inputs {
+    margin: auto;
+    width: 90%;
+    background-color: $color-secondary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8rem 3rem;
+    .input {
+      width: 50%;
+      padding: 0 5rem;
+      label {
+        color: $color-dark;
+        font-size: 1.8rem;
+        font-weight: bolder;
+        margin-right: 1rem;
+      }
+      input {
+        font-size: 1.7rem;
+        padding: 1rem;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        font-weight: bold;
+        transition: border 0.15s ease;
+        border: 3px solid transparent;
+        color: $color-dark;
+        margin-right: 0.5rem;
+
+        &:focus {
+          border: 3px solid $color-primary;
+        }
+      }
+    }
+  }
+}
+
+#height input {
+  width: 10rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btn {
+  font-family: inherit;
+  border: none;
+  font-size: 2rem;
+  color: $color-dark;
+  padding: 1.2rem 5rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  display: block;
+  margin: auto;
+  outline: none;
+  cursor: pointer;
+}
+
+.message-container {
+  position: relative;
+  width: 70%;
+  padding-top: 1rem;
+  margin: 2rem auto 0 auto;
+}
+
+.messageBox {
+  position: absolute;
+  top: 0;
+  left: calc(var(--position) * 15px - 50px);
+  text-align: center;
+  width: auto;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: $color-primary;
+  opacity: 0;
+  transform-origin: bottom;
+  transform: rotateX(90deg);
+  font-size: 2.1rem;
+  color: black;
+  font-weight: bold;
+  transition: opacity 0.2s ease, transform 0.3s ease 0.8s;
+
+  &::after {
+    content: " ";
+    position: absolute;
+    left: 30px;
+    bottom: -10px;
+    border-top: 10px solid $color-primary;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-bottom: none;
+  }
+}
+
+.messageBox-show {
+  opacity: 1;
+  transform: rotateX(0deg);
+}
+
+.btn-primary {
+  position: relative;
+  width: 30%;
+  height: 5rem;
+  background-color: $color-primary;
+  margin: 5rem auto 2.5rem auto;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  transition: height 1s ease 0.5s, width 1s cubic-bezier(0.72, 0.21, 0.28, 0.59);
+}
+
+.btn-primary-expand {
+  padding: 0.7rem;
+  animation: expand 0.8s forwards linear;
+
+  &::before {
+    content: "";
+    position: absolute;
+    min-width: 0rem;
+    max-width: 100%;
+    width: calc(var(--width, 0) * 15px);
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--background-color);
+    border-radius: 100px;
+    transition: width 1s ease;
+  }
+}
+
+@keyframes expand {
+  0% {
+    height: 5rem;
+  }
+  10% {
+    height: 2.5rem;
+  }
+  25% {
+    height: 1rem;
+    width: 21%;
+  }
+  50% {
+    height: 1rem;
+    width: 35%;
+  }
+  75% {
+    height: 1rem;
+    width: 52.5%;
+  }
+  100% {
+    height: 1rem;
+    width: 100%;
+  }
+}
+.btn-secondary {
+  background-color: $color-light;
+  border: 3px solid $color-primary;
+  transition: background-color 0.1s ease, box-shadow 0.1s ease;
+
+  &:hover {
+    background-color: $color-primary;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  }
+}
