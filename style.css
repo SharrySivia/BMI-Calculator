@@ -175,8 +175,8 @@ input::-webkit-inner-spin-button {
   margin: 5rem auto 2.5rem auto;
   -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  -webkit-transition: height 1s ease 0.5s, width 1s cubic-bezier(0.72, 0.21, 0.28, 0.59);
-  transition: height 1s ease 0.5s, width 1s cubic-bezier(0.72, 0.21, 0.28, 0.59);
+  -webkit-transition: height 1s ease, width 1s ease;
+  transition: height 1s ease, width 1s ease;
 }
 
 .btn-primary-expand {
