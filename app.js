@@ -4,12 +4,12 @@ const inch = document.getElementById("inch");
 const btnCalculate = document.getElementById("calculate");
 const btnReset = document.getElementById("reset");
 let messageBox;
-let bmi;
+let bmi = 0;
 
-let BMIRange = {
-  underweight: ["Underweight", "tomato"],
-  normal: ["Normal", "green"],
-  overweight: ["Overweight", "red"]
+let BarColors = {
+  underweight: "tomato",
+  normal: "green",
+  overweight: "red"
 };
 
 //Changing foot and inch to meter
@@ -35,12 +35,12 @@ function displayBar() {
   }
   messageBox = document.getElementById("messageBox");
 
-  for (let i = 0; i < bmi; i++) {
+  for (let i = 0; i < (bmi > 100 ? 44 : bmi); i++) {
     btnCalculate.style.setProperty("--width", i);
     messageBox.style.setProperty("--position", i);
   }
-  btnCalculate.style.setProperty("--background-color", BMIRange[status][1]);
-  messageBox.textContent = BMIRange[status][0];
+  btnCalculate.style.setProperty("--background-color", BarColors[status]);
+  messageBox.textContent = status;
   messageBox.classList.add("messageBox-show");
 }
 
@@ -55,6 +55,10 @@ function calculateBMI() {
     transFormBtn();
     setTimeout(displayBar, 1000);
   }
+  //Reset everything when user don't click reset
+  weight.addEventListener("focus", reset);
+  foot.addEventListener("focus", reset);
+  inch.addEventListener("focus", reset);
 }
 
 //Reset Everything
@@ -65,8 +69,15 @@ function reset() {
   bmi = 0;
   btnCalculate.style.setProperty("--width", 0);
   btnCalculate.classList.remove("btn-primary-expand");
-  btnCalculate.textContent = "Calculate";
   messageBox.classList.remove("messageBox-show");
+  setTimeout(() => {
+    btnCalculate.textContent = "Calculate";
+  }, 270);
+
+  //Remove eventListeners from inputs
+  weight.removeEventListener("focus", reset);
+  foot.removeEventListener("focus", reset);
+  inch.removeEventListener("focus", reset);
 }
 
 //Calculate BMI on Calculate button click
